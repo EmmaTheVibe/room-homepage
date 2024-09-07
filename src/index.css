@@ -1,13 +1,333 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+p {
+  line-height: 24px;
+  font-weight: 500;
+  color: hsl(0, 0%, 63%);
+}
+
+.container {
+  width: 87%;
+}
+
+.navbar {
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+}
+.nav-items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  margin: 0 auto;
+  transform: translateY(1px);
+}
+
+.drawer {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.drawer .container {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer svg {
+  transform: translateY(-2px);
+}
+.drawer-tabs {
+  display: flex;
+}
+.drawer-tabs p {
+  color: black;
+  margin-left: 18px;
+  font-weight: 700;
+}
+
+.info,
+.about-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home {
+  width: 100%;
+}
+
+.carousel {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  background-color: black;
+}
+.pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.info .container {
+  overflow: hidden;
+}
+.textbox {
+  padding: 70px 0;
+  display: none;
+}
+.textbox.active {
+  display: block;
+}
+.header,
+.text {
+  display: none;
+}
+.header.active {
+  display: block;
+  margin-bottom: 16px;
+  animation: enter 0.4s ease-in-out;
+}
+@keyframes enter {
+  from {
+    transform: translateX(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+.text.active {
+  display: block;
+  margin-bottom: 36px;
+  animation: enter2 0.4s ease;
+}
+@keyframes enter2 {
+  from {
+    transform: translateX(50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+.shop {
+  display: none;
+}
+.shop.active {
+  fill: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  animation: enter3 0.4s ease;
+}
+.shop h3 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 12px;
+}
+.shop svg {
+  transform: translateY(-2px);
+}
+.shop:hover {
+  fill: hsl(0, 0%, 63%);
+}
+.shop:hover h3 {
+  color: hsl(0, 0%, 63%);
+}
+@keyframes enter3 {
+  from {
+    transform: translateX(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.clicker {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  background-color: black;
+}
+.clicker span {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clicker svg {
+  transform: scale(0.8);
+}
+
+.about-section img {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.about {
+  padding: 50px 0;
+}
+.about h2 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 700px) {
+  .nav-items {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .nav-tabs {
+    display: flex;
+  }
+  .nav-link {
+    margin-right: 50px;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    height: 2px;
+    width: 0;
+    background-color: #fff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active::after {
+    width: 100%;
+    background-color: #fff;
+  }
+  .logo {
+    margin: 0;
+    margin-right: 70px;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .home {
+    display: flex;
+  }
+  .carousel {
+    width: 60%;
+    aspect-ratio: 16/9;
+  }
+  .clicker {
+    width: 25%;
+    height: unset;
+    aspect-ratio: 16/7;
+    left: 0;
+    cursor: pointer;
+  }
+  span:hover {
+    background-color: hsl(0, 0%, 27%);
+  }
+  .info {
+    width: 40%;
+    position: relative;
+  }
+
+  .about-section {
+    flex-direction: row;
+    align-items: normal;
+  }
+  .about-section img {
+    width: 30%;
+  }
+  .about {
+    padding: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .navbar {
+    height: 120px;
+  }
+  .navbar .container {
+    width: 90%;
+  }
+  .nav-link {
+    margin-right: 30px;
+  }
+
+  .textbox {
+    width: 100%;
+    padding: 70px 40px;
+  }
+  .text.active {
+    margin-bottom: 20px;
+  }
+
+  .about {
+    padding: 65px 40px;
+  }
+  .about h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  h1 {
+    font-size: 46px;
+  }
 }
